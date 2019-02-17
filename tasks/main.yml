@@ -1,2 +1,21 @@
 ---
 # tasks file for ansible_container
+
+# be sure gcc is installed
+- name: be sure gcc is installed
+  package: name=gcc state=present
+
+# Update pip9, setuptools
+# Ansible-container 0.9.2 doesn't work with pip above version 10.0.
+# You should use pip version 9.0.X.
+- name: update pip9 and setuptools
+  pip:
+    name:
+      - pip~=9.0
+      - setuptools
+    executable: pip3.6
+    state: forcereinstall
+
+# be sure ansible-container is installed
+- name: be sure pip modules are installed
+  pip: name=ansible-container[docker] executable=pip3.6 state=present
