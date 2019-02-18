@@ -67,4 +67,4 @@ dependencies:
   - src: redtail83.ansible
     version: v1.0.0
   - src: redtail83.python36
-    version: v1.0.0
+    version: v1.0.1
